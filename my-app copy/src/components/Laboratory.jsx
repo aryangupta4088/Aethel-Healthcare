@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
 
 const CSS = `
 * {
@@ -522,7 +523,7 @@ body {
 }
 `;
 
-export default function Laboratory() {
+export default function Laboratory({ onBack }) {
   const [activeNav, setActiveNav] = useState("Overview");
   const [time, setTime] = useState(new Date());
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -624,6 +625,19 @@ export default function Laboratory() {
               >
                 <span className="material-symbols-outlined">menu</span>
               </button>
+              {onBack && (
+                <button
+                  onClick={onBack}
+                  className="icon-btn"
+                  style={{
+                    background: "rgba(255, 255, 255, 0.2)",
+                    marginRight: "1rem",
+                  }}
+                  title="Back to Dashboard"
+                >
+                  <ArrowLeft size={18} style={{ color: "white" }} />
+                </button>
+              )}
               <h1 className="topbar-title">🔬 Laboratory Command (Violet Zone)</h1>
               <div className="topbar-stats">
                 <span>Pending: 15</span>

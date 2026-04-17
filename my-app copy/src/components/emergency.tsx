@@ -15,6 +15,7 @@ import {
   Shield,
   Stethoscope,
   Wifi,
+  ArrowLeft,
 } from "lucide-react";
 
 type Severity = "Critical" | "Moderate" | "Stable";
@@ -34,7 +35,7 @@ const routeOptions = [
   { name: "OPD Green", status: "NOT Alerted", dot: "bg-green-300", text: "text-slate-300", muted: true },
 ];
 
-export default function App() {
+export default function Emergency({ onBack }: { onBack?: () => void }) {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [severity, setSeverity] = useState<Severity>("Critical");
 
@@ -42,6 +43,15 @@ export default function App() {
     <div className="min-h-screen bg-[#f9f9f9] font-['Manrope'] text-[#1a1c1c] antialiased">
       <header className="fixed top-0 z-50 flex h-16 w-full items-center justify-between bg-[#f9f9f9]/80 px-8 shadow-[0_8px_32px_rgba(26,28,28,0.06)] backdrop-blur-xl">
         <div className="flex items-center gap-4">
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="p-2 hover:bg-stone-100 rounded-lg transition-colors"
+              title="Back to Dashboard"
+            >
+              <ArrowLeft size={20} className="text-red-600" />
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setIsPanelOpen((prev) => !prev)}

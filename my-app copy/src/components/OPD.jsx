@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { ArrowLeft } from 'lucide-react';
 
-export default function App() {
+export default function OPD({ onBack }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -58,6 +59,15 @@ export default function App() {
       >
         <div className="flex justify-between items-center px-8 h-20 w-full tracking-tight antialiased">
           <div className="flex items-center gap-4">
+            {onBack && (
+              <button
+                onClick={onBack}
+                className="p-2 hover:bg-emerald-100 rounded-lg transition-colors"
+                title="Back to Dashboard"
+              >
+                <ArrowLeft size={20} style={{ color: '#0e1f16' }} />
+              </button>
+            )}
             <button
               onClick={() => setSidebarOpen(true)}
               className="text-xl font-bold cursor-pointer hover:opacity-70 transition-opacity"

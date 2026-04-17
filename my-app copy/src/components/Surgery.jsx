@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
 
-export default function App() {
+export default function Surgery({ onBack }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -423,6 +424,16 @@ export default function App() {
           {/* TOP NAV BAR */}
           <header className="top-header">
             <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+              {onBack && (
+                <button 
+                  onClick={onBack}
+                  className="silver-zone-btn" 
+                  title="Back to Dashboard"
+                  style={{ marginRight: "0.5rem" }}
+                >
+                  <ArrowLeft size={20} style={{ color: "#333333" }} />
+                </button>
+              )}
               <button className="silver-zone-btn" onClick={() => setSidebarOpen(true)}>
                 <div className="icon-square">
                   <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>shield_with_heart</span>

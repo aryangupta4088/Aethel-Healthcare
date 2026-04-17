@@ -434,7 +434,7 @@ function FHRBars({ bpm }) {
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────
-export default function MaternityDashboard() {
+export default function MaternityDashboard({ onBack }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeNav, setActiveNav] = useState("DASHBOARD");
   const [time, setTime] = useState(new Date());
@@ -498,6 +498,16 @@ export default function MaternityDashboard() {
               <span className="notif-badge">2</span>
             </button>
             <button className="top-icon-btn">⚙️</button>
+            {onBack && (
+              <button 
+                onClick={onBack} 
+                className="top-icon-btn" 
+                title="Back to Dashboard"
+                style={{ cursor: "pointer" }}
+              >
+                <ArrowLeft size={18} style={{ color: "var(--text-primary)" }} />
+              </button>
+            )}
             <div className="avatar-sm">KS</div>
           </div>
         </header>

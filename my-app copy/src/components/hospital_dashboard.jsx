@@ -65,10 +65,16 @@ const BLOCKCHAIN_EVENTS = [
 
 // --- Sub-Components ---
 
-const OrbitDeptBubble = ({ dept, i, total, cx, cy, r }) => {
+const OrbitDeptBubble = ({ dept, i, total, cx, cy, r, onNavigate }) => {
   const angle = (2 * Math.PI / total) * i - Math.PI / 2;
   const x = cx + r * Math.cos(angle) - 40;
   const y = cy + r * Math.sin(angle) - 40;
+
+  const handleClick = () => {
+    if (onNavigate) {
+      onNavigate(dept.id);
+    }
+  };
 
   return (
     <motion.div
@@ -76,7 +82,8 @@ const OrbitDeptBubble = ({ dept, i, total, cx, cy, r }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: i * 0.1, duration: 0.5 }}
       whileHover={{ scale: 1.1, zIndex: 20 }}
-      className="absolute w-20 h-20 rounded-full flex flex-col items-center justify-center cursor-pointer shadow-lg border backdrop-blur-md"
+      onClick={handleClick}
+      className="absolute w-20 h-20 rounded-full flex flex-col items-center justify-center cursor-pointer shadow-lg border backdrop-blur-md hover:shadow-xl transition-shadow"
       style={{
         left: x,
         top: y,
@@ -100,7 +107,7 @@ const OrbitDeptBubble = ({ dept, i, total, cx, cy, r }) => {
 
 // --- Main App ---
 
-export default function ClinicalCommandCenter() {
+export default function ClinicalCommandCenter({ onNavigate }) {
   const [chaosMode, setChaosMode] = useState(false);
   const [chartData, setChartData] = useState(INITIAL_CHART_DATA);
   const [isLowOccupancy, setIsLowOccupancy] = useState(false);
@@ -222,7 +229,8 @@ export default function ClinicalCommandCenter() {
                 dept={dept} 
                 i={i} 
                 total={DEPARTMENTS.length} 
-                cx={260} cy={260} r={200} 
+                cx={260} cy={260} r={200}
+                onNavigate={onNavigate}
               />
             ))}
           </div>

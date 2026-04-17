@@ -11,9 +11,10 @@ import {
   Shield,
   Brain,
   AlertTriangle as WarningIcon,
+  ArrowLeft,
 } from "lucide-react";
 
-export default function PharmacyCommandCenter() {
+export default function PharmacyCommandCenter({ onBack }) {
   const [activeTab, setActiveTab] = useState("inventory");
 
   return (
@@ -22,6 +23,15 @@ export default function PharmacyCommandCenter() {
       <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#e7bdb2]">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-6">
+            {onBack && (
+              <button
+                onClick={onBack}
+                className="p-2 rounded-lg hover:bg-[#f1dfd8] text-[#ad2b00] transition-colors"
+                title="Back to Dashboard"
+              >
+                <ArrowLeft size={20} />
+              </button>
+            )}
             <h1 className="text-lg font-bold text-[#ad2b00]">Pharmacy Command Center</h1>
             <div className="h-6 w-px bg-[#e7bdb2]/30"></div>
             <nav className="hidden md:flex gap-6">

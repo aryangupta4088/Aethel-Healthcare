@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
 
-export default function Radiology() {
+export default function Radiology({ onBack }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [time, setTime] = useState(new Date());
 

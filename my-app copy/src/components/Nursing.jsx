@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ArrowLeft } from "lucide-react";
 
 const patients = [
   {
@@ -68,7 +69,7 @@ const navItems = [
   { icon: "📊", label: "Health Trends" },
 ];
 
-export default function EtherealClinician() {
+export default function EtherealClinician({ onBack }) {
   const [taskList, setTaskList] = useState(tasks);
   const [recording, setRecording] = useState(false);
   const [transcript, setTranscript] = useState("Awaiting clinician input...");
@@ -187,6 +188,15 @@ export default function EtherealClinician() {
         {/* Top Nav */}
         <header style={{ background: "#fff", borderBottom: "1px solid #e2e8f0", padding: "0 24px", height: 56, display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
           <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
+            {onBack && (
+              <button
+                onClick={onBack}
+                style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", color: "#2b6cb0", fontSize: 20, padding: "4px 8px" }}
+                title="Back to Dashboard"
+              >
+                <ArrowLeft size={20} />
+              </button>
+            )}
             <div
               onClick={() => setSidebarOpen(true)}
               style={{ fontWeight: 800, fontSize: 15, color: "#2b6cb0", letterSpacing: "-0.5px", cursor: "pointer", userSelect: "none" }}
