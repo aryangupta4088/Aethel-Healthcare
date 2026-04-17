@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinical Command | Admin Command Center</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f19e0e",
+              "nav-bg": "#EC9A04",
+              "glass-bg": "#FFDDB6",
+              background: "#f8fafc",
+              surface: "#ffffff",
+              "on-surface": "#1e293b",
+              "outline-variant": "#e2e8f0",
+              error: "#ef4444",
+              "error-container": "#fee2e2"
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1.5rem",
+              full: "9999px"
+            },
+            fontFamily: {
+              headline: ["Manrope"],
+              body: ["Inter"],
+              label: ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-background text-on-surface font-body selection:bg-primary/30">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
